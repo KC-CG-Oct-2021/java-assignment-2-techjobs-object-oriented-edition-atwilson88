@@ -1,10 +1,10 @@
-package org.launchcode.techjobs_oo.Tests;
-import org.junit.Before;
+package org.launchcode.techjobs.oo.test;
+import org.junit.Assert;
 import org.junit.Test;
-//import org.launchcode.techjobs_oo.*;
+import org.junit.Before;
+import org.launchcode.techjobs.oo.*;
 
 import static org.junit.Assert.*;
-
 
 public class JobTest {
     Job jobTest;
