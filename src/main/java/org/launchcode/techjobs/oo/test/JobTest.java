@@ -58,18 +58,18 @@ public class JobTest {
     }
 
     @Test
-    public void testToStringContainsBlankLine() {
+    public void testToStringStartsAndEndsWithNewLineCallsToString() {
         assertEquals('\n', jobTest6.toString().charAt(0));
         assertEquals('\n', jobTest6.toString().charAt(jobTest6.toString().length() -1));
     }
 
     @Test
-    public void testToStringForCorrectLabels() {
+    public void testToStringContainsCorrectLabelsAndData() {
         assertEquals("\nID: " + jobTest7.getId() + "\nName: Product Tester\nEmployer: ACME\nLocation: Desert\nPosition Type: Quality control\nCore Competency: Persistence\n", jobTest7.toString());
     }
 
     @Test
-    public void testToStringEmptyFields() {
+    public void testTestToStringHandlesEmptyFieldExists() {
         assertEquals("\nID: " + jobTest8.getId() + "\nName: Product Tester\nEmployer: Data not available\nLocation: Desert\nPosition Type: Quality control\nCore Competency: Data not available\n", jobTest8.toString());
 
     }
