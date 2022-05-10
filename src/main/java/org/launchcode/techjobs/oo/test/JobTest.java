@@ -1,8 +1,7 @@
 package org.launchcode.techjobs.oo.test;
-import org.junit.Assert;
 import org.junit.Test;
-import org.junit.Before;
 import org.launchcode.techjobs.oo.*;
+//import java.lang.String;
 
 import static org.junit.Assert.*;
 
@@ -17,8 +16,11 @@ public class JobTest {
     Job jobTest8;
 
 
-    public void createJobObject() {
-    }
+//    public Job createJob() {
+//
+//    }
+
+
 
 
 
@@ -70,7 +72,7 @@ public class JobTest {
     }
 
     @Test
-    public void testToStringHandlesEmptyField() {
+    public void testJobConstructorSetsAllFields() {
         jobTest8 = new Job("Product Tester", new Employer(""), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency(""));
         assertEquals("\nID: " + jobTest8.getId() + "\nName: Product Tester\nEmployer: Data not available\nLocation: Desert\nPosition Type: Quality control\nCore Competency: Data not available\n", jobTest8.toString());
 
