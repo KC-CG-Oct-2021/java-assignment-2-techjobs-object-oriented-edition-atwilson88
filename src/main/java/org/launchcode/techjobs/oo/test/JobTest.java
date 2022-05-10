@@ -57,7 +57,7 @@ public class JobTest {
     }
 
     @Test
-    public void testToStringStartsAndEndsWithNewLineCallsToString() {
+    public void testToStringStartsAndEndsWithNewLine() {
         jobTest6 = new Job("Product Tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         assertEquals('\n', jobTest6.toString().charAt(0));
         assertEquals('\n', jobTest6.toString().charAt(jobTest6.toString().length() -1));
@@ -70,7 +70,7 @@ public class JobTest {
     }
 
     @Test
-    public void testTestToStringHandlesEmptyFieldExists() {
+    public void testToStringHandlesEmptyField() {
         jobTest8 = new Job("Product Tester", new Employer(""), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency(""));
         assertEquals("\nID: " + jobTest8.getId() + "\nName: Product Tester\nEmployer: Data not available\nLocation: Desert\nPosition Type: Quality control\nCore Competency: Data not available\n", jobTest8.toString());
 
