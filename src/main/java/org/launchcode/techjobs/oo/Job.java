@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Job {
 
-    public int getId;
+//    public int getId;
     private int id;
     private static int nextId = 1;
 
@@ -38,6 +38,68 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Job job = (Job) o;
+        return id == job.id;
+//        if (!(o instanceof Job)) return false;
+//        Job job = (Job) o;
+//        return id == job.id && name.equals(job.name) && employer.equals(job.employer) && location.equals(job.location) && positionType.equals(job.positionType) && coreCompetency.equals(job.coreCompetency);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        if(name.isEmpty() && employer.getValue().isBlank() && location.getValue().isBlank() && positionType.getValue().isBlank() && coreCompetency.getValue().isBlank()) {
+            throw new IllegalArgumentException("OOPS! This job does not seem to exist.");
+        }
+
+        if (name.equals("")) {
+            name = "Data not available";
+        }
+
+        if (employer.getValue().equals("")){
+            employer.setValue("Data not available");
+        }
+        if (location.getValue().equals("")){
+            location.setValue("Data not available");
+        }
+        if (coreCompetency.getValue().equals("")){
+            coreCompetency.setValue("Data not available");
+        }
+        if (positionType.getValue().equals("")){
+            positionType.setValue("Data not available");
+        }
+        String jobStr= "\n" + "ID: "+ this.id + "\n" +
+                "Name: " + this.name +"\n" +
+                "Employer: " + this.employer +"\n" +
+                "Location: " + this.location +"\n" +
+                "Position Type: " + this.positionType + "\n" +
+                "Core Competency: " + this.coreCompetency + "\n";
+        return jobStr;
+    }
+
+//    @Override
+//    public String toString() {
+//        return "\n" +
+//                "ID: " + id +
+//                "\nName: " + name +
+//                "\nEmployer: " + employer.getValue() +
+//                "\nLocation: " + location.getValue() +
+//                "\nPosition Type: " + positionType.getValue() +
+//                "\nCore Competency: " + coreCompetency.getValue() +
+//                "\n";
+//
+//    }
+    public int getId() {
+        return id;
+    }
 
     public String getName() {
         return name;
@@ -77,35 +139,5 @@ public class Job {
 
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Job)) return false;
-        Job job = (Job) o;
-        return id == job.id && name.equals(job.name) && employer.equals(job.employer) && location.equals(job.location) && positionType.equals(job.positionType) && coreCompetency.equals(job.coreCompetency);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, employer, location, positionType, coreCompetency);
-    }
-
-    @Override
-    public String toString() {
-        return "\n" +
-                "ID: " + id +
-                "\nName: " + name +
-                "\nEmployer: " + employer.getValue() +
-                "\nLocation: " + location.getValue() +
-                "\nPosition Type: " + positionType.getValue() +
-                "\nCore Competency: " + coreCompetency.getValue() +
-                "\n";
-
     }
 }

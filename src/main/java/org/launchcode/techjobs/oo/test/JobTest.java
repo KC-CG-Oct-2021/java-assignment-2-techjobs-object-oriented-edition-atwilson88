@@ -1,9 +1,14 @@
 package org.launchcode.techjobs.oo.test;
+import org.junit.Assert;
 import org.junit.Test;
 import org.launchcode.techjobs.oo.*;
 //import java.lang.String;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 import static org.junit.Assert.*;
+
+@RunWith(JUnit4.class)
 
 public class JobTest {
     Job jobTest;
@@ -21,23 +26,24 @@ public class JobTest {
 //    }
 
 
-
-
-
     @Test
     public void testSettingJobId() {
-        jobTest = new Job();
-        jobTest2 = new Job();
-        int test1 = jobTest.getId;
-        int test2 = jobTest2.getId -1;
-        assertEquals(test1, test2, 1);
+        Job jobTest = new Job();
+        Job jobTest2 = new Job();
+        assertFalse(jobTest.getId() == jobTest2.getId());
+        assertEquals(1, jobTest.getId());
+        assertEquals(2, jobTest2.getId());
+//        int test1 = jobTest.getId;
+//        int test2 = jobTest2.getId -1;
+//        assertEquals(test1, test2, 1);
     }
 
     @Test
-    public void testJobConstructorSetAllFields() {
+    public void testJobConstructorSetsAllFields() {
         jobTest3 = new Job("Product Tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
-        assertTrue(jobTest3.getName() instanceof String);
+        assertTrue(jobTest3.getId() >0);
+//        assertTrue(jobTest3.getName() instanceof String);
         assertTrue(jobTest3.getEmployer() instanceof Employer);
         assertTrue(jobTest3.getLocation() instanceof Location);
         assertTrue(jobTest3.getPositionType() instanceof PositionType);
@@ -72,9 +78,14 @@ public class JobTest {
     }
 
     @Test
-    public void testJobConstructorSetsAllFields() {
-        jobTest8 = new Job("Product Tester", new Employer(""), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency(""));
-        assertEquals("\nID: " + jobTest8.getId() + "\nName: Product Tester\nEmployer: Data not available\nLocation: Desert\nPosition Type: Quality control\nCore Competency: Data not available\n", jobTest8.toString());
-
+    public void testToStringHandlesEmptyField() {
+        Job jobTest8 = new Job("Product Tester", new Employer(""), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency(""));
+//        assertEquals("\nID: " + jobTest8.getId() + "\nName: Product Tester\nEmployer: Data not available\nLocation: Desert\nPosition Type: Quality control\nCore Competency: Data not available\n", jobTest8.toString());
+        assertEquals("\n" + "ID: 5\n" +
+                "Name: Data not available\n" +
+                "Employer: Data not available\n" +
+                "Location: Data not available\n" +
+                "Position Type: Data not available\n" +
+                "Core Competency: Data not available\n", jobTest8.toString());
     }
 }

@@ -2,7 +2,7 @@ package org.launchcode.techjobs.oo;
 
 import java.util.Objects;
 
-public class JobField {
+public abstract class JobField {
 
     private int id;
     private static int nextId = 1;
@@ -18,6 +18,23 @@ public class JobField {
         this.value = value;
     }
 
+    // Getters and Setters:
+
+    public int getId() {
+        return id;
+    }
+
+    public String getValue() {
+//        if (value == null || value.isEmpty()) {
+//            return "Data not available";
+//        }
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
     @Override
     public String toString() {
         return value;
@@ -26,31 +43,14 @@ public class JobField {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Location)) return false;
-        Location location = (Location) o;
-        return getId() == location.getId();
+        if (!(o instanceof JobField)) return false;
+        JobField jobField = (JobField) o;
+        return id == jobField.id;
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(getId());
-    }
-
-    // Getters and Setters:
-
-    public int getId() {
-        return id;
-    }
-
-    public String getValue() {
-        if (value == null || value.isEmpty()) {
-            return "Data not available";
-        }
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
     }
 
 }
